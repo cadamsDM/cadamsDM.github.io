@@ -4,3 +4,126 @@ body {
   color: #D9A411;
   text-align: center;
 }
+
+/* Base styling (desktop-first) */
+.image-gallery {
+  display: block;        /* stack elements vertically */
+  padding: 20px;
+}
+
+.image-gallery img {
+  display: block;        /* removes inline spacing */
+  width: 100%;           /* take full container width */
+  max-width: 800px;      /* optional: limit max size */
+  margin: 0 auto 20px;   /* center and add spacing below */
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Header wrapper */
+header {
+  display: flex;
+  justify-content: space-between; /* logo left, menu right */
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #f8f8f8;       /* light gray background */
+  border-bottom: 1px solid #ddd;
+}
+
+
+/* Logo area */
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;                       /* space between image + text */
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+header .logo img {
+  width: 50px;
+  height: auto;
+}
+
+
+/* Navigation menu */
+header .menu {
+  display: flex;
+  gap: 20px;
+}
+
+header .menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+header .menu a:hover {
+  color: #0077cc;                  /* highlight color */
+}
+
+
+
+
+
+
+
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  header .menu {
+    flex-direction: column;        /* stack menu links */
+    gap: 10px;
+    margin-top: 10px;
+  }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .image-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    padding: 15px;
+  }
+
+  header, footer {
+    flex-direction: column;  /* stacks logo/menu vertically if needed */
+    text-align: center;
+  }
+
+  .menu a {
+    display: block;          /* stack nav links */
+    margin: 5px 0;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .image-gallery {
+    grid-template-columns: 1fr; /* single column */
+    gap: 10px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
