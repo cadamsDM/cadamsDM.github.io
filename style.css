@@ -127,3 +127,58 @@ header .menu a:hover {
     font-size: 0.95rem;
   }
 }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #ddd;
+  margin-top: 40px;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+/* Footer logo */
+footer .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+footer .footer-logo img {
+  width: 40px;
+  height: auto;
+}
+
+/* Social links */
+footer .social-media {
+  display: flex;
+  gap: 15px;
+}
+
+footer .social-media a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+footer .social-media a:hover {
+  color: #0077cc; /* highlight color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  footer .social-media {
+    justify-content: center;
+  }
+}
