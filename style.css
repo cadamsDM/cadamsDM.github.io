@@ -1,7 +1,7 @@
 body {
   font-family: montserrat;
-  background: #531B5C;
-  color: #D9A411;
+  background: #7fa1ca;
+  color: #5060ac;
   text-align: center;
 }
 
@@ -69,10 +69,27 @@ header .menu a:hover {
   color: #0077cc;                  /* highlight color */
 }
 
+/* Footer social icons container */
+footer .social-media {
+  display: flex;
+  gap: 15px;
+  align-items: center; /* ensures icons align vertically */
+}
 
+/* Default size and color for all icons */
+footer .social-media a svg {
+  width: 24px;
+  height: 24px;
+  color: #333; /* default color */
+  transition: color 0.2s, transform 0.2s; /* smooth color & scale changes */
+  display: block; /* fixes baseline alignment issues */
+}
 
-
-
+/* Hover effects: color change + slight enlargement */
+footer .social-media a:hover svg {
+  color: #0077cc;   /* hover color */
+  transform: scale(1.2); /* enlarge by 20% */
+}
 
 
 
@@ -133,11 +150,13 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background-color: #f8f8f8;
+  background-color: #ff2626;
   border-top: 1px solid #ddd;
   margin-top: 40px;
   flex-wrap: wrap; /* allows wrapping on small screens */
 }
+
+
 
 /* Footer logo */
 footer .footer-logo {
@@ -154,16 +173,30 @@ footer .footer-logo img {
 }
 
 /* Social links */
-footer .social-media {
+.social-media {
   display: flex;
   gap: 15px;
 }
 
-footer .social-media a {
-  text-decoration: none;
+.icon-wrapper {
+  display: flex;
+  align-items: center; /* ensures inner SVGs align perfectly */
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+
+.social-media a svg {
+  width: 24px;
+  height: 24px;
+  display: block;     /* removes baseline issues */
   color: #333;
-  font-weight: 500;
-  transition: color 0.2s;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.social-media a:hover svg {
+  color: #0077cc;    /* hover color */
+  transform: scale(1.2);
 }
 
 footer .social-media a:hover {
