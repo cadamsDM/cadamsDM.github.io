@@ -1,12 +1,865 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="robots" content="noindex, nofollow">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThimbleWinter - Christchurch's Trendiest Second-Hand Fashion</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <title>CadamsDM Website</title>
+  
+    
+    <style>
+        :root {
+            --charcoal: rgb(34,34,34);
+            --deep-navy: rgb(10,25,70);
+            --muted-gold: rgb(204,153,51);
+            --rust: rgb(179,90,62);
+            --off-white: rgb(245,245,245);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--deep-navy);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: var(--rust);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--rust);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--muted-gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 2.5rem 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            width: 200px;
+            transition: width 0.3s ease;
+        }
+        
+        .search-bar input:focus {
+            width: 250px;
+            outline: none;
+            border-color: var(--muted-gold);
+        }
+        
+        .search-bar i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .user-actions a {
+            color: var(--charcoal);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .user-actions a:hover {
+            color: var(--rust);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            background: linear-gradient(rgba(10, 25, 70, 0.7), rgba(10, 25, 70, 0.7)), url('https://picsum.photos/seed/winterfashion/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--muted-gold);
+            color: var(--charcoal);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--rust);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Featured Items Section */
+        .featured-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--rust);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+        
+        .product-image {
+            height: 350px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .product-action-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .product-action-btn:hover {
+            background-color: var(--off-white);
+        }
+        
+        .product-action-btn.primary {
+            background-color: var(--deep-navy);
+            color: white;
+            border: none;
+        }
+        
+        .product-action-btn.primary:hover {
+            background-color: var(--rust);
+        }
+        
+        /* Product Listing Section */
+        .listing-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .listing-container {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .filters {
+            width: 250px;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-group h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--deep-navy);
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-option input {
+            accent-color: var(--muted-gold);
+        }
+        
+        .filter-option label {
+            cursor: pointer;
+        }
+        
+        .products-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* Product Detail Section */
+        .product-detail-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-detail-container {
+            display: flex;
+            gap: 3rem;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .product-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .main-image {
+            height: 500px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .thumbnail-images {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .thumbnail {
+            height: 80px;
+            width: 80px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--muted-gold);
+        }
+        
+        .product-details {
+            flex: 1;
+            padding: 2rem;
+        }
+        
+        .product-details h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--deep-navy);
+        }
+        
+        .product-price-detail {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-description {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .product-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .meta-item strong {
+            width: 100px;
+        }
+        
+        .product-actions-detail {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .action-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .action-btn.primary {
+            background-color: var(--deep-navy);
+            color: white;
+        }
+        
+        .action-btn.primary:hover {
+            background-color: var(--rust);
+        }
+        
+        .action-btn.secondary {
+            background-color: white;
+            color: var(--charcoal);
+            border: 1px solid #ddd;
+        }
+        
+        .action-btn.secondary:hover {
+            background-color: var(--off-white);
+        }
+        
+        .seller-info {
+            padding: 1.5rem;
+            background-color: var(--off-white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .seller-avatar {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .seller-details h4 {
+            margin-bottom: 0.3rem;
+        }
+        
+        .seller-details p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Seller Profile Section */
+        .seller-profile-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .profile-header {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .profile-avatar {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-info h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-navy);
+        }
+        
+        .profile-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .profile-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .seller-products {
+            margin-top: 2rem;
+        }
+        
+        .seller-products h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--deep-navy);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-container {
+            display: flex;
+            gap: 3rem;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        .about-content {
+            flex: 1;
+            padding: 3rem;
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--deep-navy);
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq-container {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: var(--off-white);
+        }
+        
+        .faq-question h3 {
+            font-size: 1.2rem;
+            color: var(--deep-navy);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--deep-navy);
+            color: white;
+            padding: 3rem 5%;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--muted-gold);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--muted-gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--muted-gold);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .product-detail-container, .about-container {
+                flex-direction: column;
+            }
+            
+            .main-image {
+                height: 400px;
+            }
+            
+            .listing-container {
+                flex-direction: column;
+            }
+            
+            .filters {
+                width: 100%;
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+        
+        /* Page Sections (hidden by default) */
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--deep-navy);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
 
-    <!-- (gtag.js) -->
+  <!-- (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,72 +870,856 @@
       gtag("config", "G-WHJCMPKR5W");
     </script>
     <link rel="stylesheet" href="style.css" />
-  </head>
-
-  <body>  
+</head>
+<body>
+    <!-- Header -->
     <header>
-    <div class="logo">
-      <img src="Images/SippinLogo.svg" alt="Logo" width="50" />
-      <span>Sippin</span>
-    </div>
-    <nav class="menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-    <h1>Sippin Merch</h1>
-    <p>Seen these characters around? Less is more when you wear a sippin T-Shirt.</p>
+        <nav>
+            <a href="#" class="logo" onclick="showSection('home')">ThimbleWinter</a>
+            
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('listing')">Shop</a></li>
+                <li><a href="#" onclick="showSection('about')">About</a></li>
+                <li><a href="#" onclick="showSection('faq')">FAQ</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search items...">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#" onclick="showSection('profile')"><i class="fas fa-user"></i></a>
+                    <a href="#"><i class="fas fa-heart"></i></a>
+                    <a href="#"><i class="fas fa-shopping-bag"></i></a>
+                </div>
+            </div>
+        </nav>
+    </header>
     
-    <!-- Main Content -->
-  <main>
-    <section class="image-gallery">
-      <img src="Images/HoodieBackBunnyVom.jpg" alt="Image 1">
-      <img src="Images/NormalandHospoBunny.jpg" alt="Image 2">
-      <img src="Images/TShirtWomanDoggoSleeping.jpg" alt="Image 3">
-      <img src="Images/" alt="Image 4">
-      <img src="Images/.jpg" alt="Image 5">
+    <!-- Home Page -->
+    <section id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Winter Fashion, Reimagined</h1>
+            <p>Discover Christchurch's most curated collection of pre-loved winter fashion. Stand out with unique pieces that tell a story.</p>
+            <button class="cta-button" onclick="showSection('listing')">Shop Now</button>
+        </section>
+        
+        <!-- Featured Items Section -->
+        <section class="featured-section">
+            <div class="section-header">
+                <h2>Featured & Rare Finds</h2>
+                <p>Handpicked pieces from our community of fashion-forward sellers</p>
+            </div>
+            
+            <div class="featured-grid">
+                <!-- Product 1 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <span class="product-badge">Limited Edition</span>
+                    <img src="https://picsum.photos/seed/vintagecoat/600/800.jpg" alt="Vintage Wool Coat" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Vintage Wool Overcoat</h3>
+                        <p class="product-price">$120</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i> Favorite
+                            </button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); messageSeller()">
+                                <i class="far fa-comment"></i> Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <span class="product-badge">Trending</span>
+                    <img src="https://picsum.photos/seed/leatherjacket/600/800.jpg" alt="Leather Biker Jacket" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Leather Biker Jacket</h3>
+                        <p class="product-price">$85</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i> Favorite
+                            </button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); messageSeller()">
+                                <i class="far fa-comment"></i> Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <span class="product-badge">Rare Find</span>
+                    <img src="https://picsum.photos/seed/designersweater/600/800.jpg" alt="Designer Cashmere Sweater" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Designer Cashmere Sweater</h3>
+                        <p class="product-price">$95</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i> Favorite
+                            </button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); messageSeller()">
+                                <i class="far fa-comment"></i> Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
-  </main>
     
+    <!-- Product Listing Page -->
+    <section id="listing" class="page-section listing-section">
+        <div class="section-header">
+            <h2>Shop All Items</h2>
+            <p>Browse our collection of pre-loved winter fashion</p>
+        </div>
+        
+        <div class="listing-container">
+            <!-- Filters Sidebar -->
+            <div class="filters">
+                <div class="filter-group">
+                    <h3>Category</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="coats" name="category" value="coats">
+                            <label for="coats">Coats & Jackets</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="sweaters" name="category" value="sweaters">
+                            <label for="sweaters">Sweaters</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="pants" name="category" value="pants">
+                            <label for="pants">Pants</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="accessories" name="category" value="accessories">
+                            <label for="accessories">Accessories</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Size</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="xs" name="size" value="xs">
+                            <label for="xs">XS</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="s" name="size" value="s">
+                            <label for="s">S</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="m" name="size" value="m">
+                            <label for="m">M</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="l" name="size" value="l">
+                            <label for="l">L</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="xl" name="size" value="xl">
+                            <label for="xl">XL</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Style</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="vintage" name="style" value="vintage">
+                            <label for="vintage">Vintage</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="streetwear" name="style" value="streetwear">
+                            <label for="streetwear">Streetwear</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="formal" name="style" value="formal">
+                            <label for="formal">Formal</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="casual" name="style" value="casual">
+                            <label for="casual">Casual</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Brand</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="designer" name="brand" value="designer">
+                            <label for="designer">Designer</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="vintage-brand" name="brand" value="vintage-brand">
+                            <label for="vintage-brand">Vintage Brands</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="local" name="brand" value="local">
+                            <label for="local">Local Designers</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Price Range</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="price1" name="price" value="0-50">
+                            <label for="price1">$0 - $50</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price2" name="price" value="50-100">
+                            <label for="price2">$50 - $100</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price3" name="price" value="100-200">
+                            <label for="price3">$100 - $200</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price4" name="price" value="200+">
+                            <label for="price4">$200+</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="cta-button" style="width: 100%; margin-top: 1rem;">Apply Filters</button>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/woolscarf/500/700.jpg" alt="Wool Scarf" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Hand-knitted Wool Scarf</h3>
+                        <p class="product-price">$35</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/vintageboots/500/700.jpg" alt="Vintage Boots" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Vintage Leather Boots</h3>
+                        <p class="product-price">$75</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/woolsweater/500/700.jpg" alt="Wool Sweater" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Nordic Wool Sweater</h3>
+                        <p class="product-price">$55</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/beanie/500/700.jpg" alt="Designer Beanie" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Designer Cashmere Beanie</h3>
+                        <p class="product-price">$40</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/vintagedress/500/700.jpg" alt="Vintage Dress" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Vintage Wool Dress</h3>
+                        <p class="product-price">$65</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/leathergloves/500/700.jpg" alt="Leather Gloves" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Leather Driving Gloves</h3>
+                        <p class="product-price">$45</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/trenchcoat/500/700.jpg" alt="Trench Coat" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Classic Trench Coat</h3>
+                        <p class="product-price">$95</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/woolpants/500/700.jpg" alt="Wool Pants" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">High-Waisted Wool Pants</h3>
+                        <p class="product-price">$50</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
+    <!-- Product Detail Page -->
+    <section id="product-detail" class="page-section product-detail-section">
+        <div class="product-detail-container">
+            <div class="product-images">
+                <img src="https://picsum.photos/seed/vintagecoat-detail/800/1000.jpg" alt="Vintage Wool Overcoat" class="main-image" id="main-image">
+                <div class="thumbnail-images">
+                    <img src="https://picsum.photos/seed/vintagecoat-detail/800/1000.jpg" alt="Vintage Wool Overcoat" class="thumbnail active" onclick="changeImage(this)">
+                    <img src="https://picsum.photos/seed/vintagecoat-back/800/1000.jpg" alt="Vintage Wool Overcoat Back" class="thumbnail" onclick="changeImage(this)">
+                    <img src="https://picsum.photos/seed/vintagecoat-detail2/800/1000.jpg" alt="Vintage Wool Overcoat Detail" class="thumbnail" onclick="changeImage(this)">
+                    <img src="https://picsum.photos/seed/vintagecoat-tag/800/1000.jpg" alt="Vintage Wool Overcoat Tag" class="thumbnail" onclick="changeImage(this)">
+                </div>
+            </div>
+            
+            <div class="product-details">
+                <h2>Vintage Wool Overcoat</h2>
+                <p class="product-price-detail">$120</p>
+                
+                <p class="product-description">
+                    This stunning vintage wool overcoat features a timeless design with modern appeal. Made from high-quality wool with a warm lining, perfect for Christchurch winters. The coat features a classic double-breasted design with elegant buttons and a tailored fit that flatters any silhouette.
+                </p>
+                
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <strong>Size:</strong>
+                        <span>M</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Brand:</strong>
+                        <span>Vintage Collection</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Condition:</strong>
+                        <span>Excellent</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Material:</strong>
+                        <span>80% Wool, 20% Polyester</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Color:</strong>
+                        <span>Charcoal</span>
+                    </div>
+                </div>
+                
+                <div class="product-actions-detail">
+                    <button class="action-btn primary" onclick="addToCart()">Add to Cart</button>
+                    <button class="action-btn secondary" onclick="addToFavorites()">
+                        <i class="far fa-heart"></i> Add to Favorites
+                    </button>
+                    <button class="action-btn secondary" onclick="messageSeller()">
+                        <i class="far fa-comment"></i> Message Seller
+                    </button>
+                </div>
+                
+                <div class="seller-info">
+                    <img src="https://picsum.photos/seed/seller1/200/200.jpg" alt="Seller" class="seller-avatar">
+                    <div class="seller-details">
+                        <h4>Sarah's Vintage Closet</h4>
+                        <p>Member since 2021 • 127 items sold</p>
+                        <p>★★★★★ (4.8)</p>
+                    </div>
+                    <button class="action-btn primary" onclick="showSection('profile')">View Profile</button>
+                </div>
+            </div>
+        </div>
+    </section>
     
+    <!-- Seller Profile Page -->
+    <section id="profile" class="page-section seller-profile-section">
+        <div class="profile-header">
+            <img src="https://picsum.photos/seed/seller1/300/300.jpg" alt="Seller" class="profile-avatar">
+            <div class="profile-info">
+                <h2>Sarah's Vintage Closet</h2>
+                <p>Curating timeless fashion pieces for the modern wardrobe. Specializing in vintage coats and designer finds from the 70s-90s.</p>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">127</div>
+                        <div class="stat-label">Items Sold</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">4.8</div>
+                        <div class="stat-label">Rating</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">24h</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                </div>
+                
+                <div class="profile-actions">
+                    <button class="action-btn primary" onclick="messageSeller()">Message Seller</button>
+                    <button class="action-btn secondary" onclick="addToFavorites()">Follow Shop</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="seller-products">
+            <h3>Items from this Seller</h3>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/vintagecoat/500/700.jpg" alt="Vintage Wool Overcoat" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Vintage Wool Overcoat</h3>
+                        <p class="product-price">$120</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/vintagedress2/500/700.jpg" alt="Vintage Dress" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">70s Velvet Dress</h3>
+                        <p class="product-price">$85</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/vintagejacket/500/700.jpg" alt="Vintage Jacket" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">80s Leather Jacket</h3>
+                        <p class="product-price">$95</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" onclick="showSection('product-detail')">
+                    <img src="https://picsum.photos/seed/vintageblouse/500/700.jpg" alt="Vintage Blouse" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Silk Blouse</h3>
+                        <p class="product-price">$45</p>
+                        <div class="product-actions">
+                            <button class="product-action-btn primary" onclick="event.stopPropagation(); addToCart()">View</button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToFavorites()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Page -->
+    <section id="about" class="page-section about-section">
+        <div class="section-header">
+            <h2>Our Story</h2>
+            <p>Fashion-forward second-hand shopping for Christchurch's trendsetters</p>
+        </div>
+        
+        <div class="about-container">
+            <img src="https://picsum.photos/seed/fashionstore/600/800.jpg" alt="ThimbleWinter Store" class="about-image">
+            <div class="about-content">
+                <h2>ThimbleWinter: Fashion Reimagined</h2>
+                <p>
+                    Founded in 2020, ThimbleWinter began as a small community of fashion enthusiasts in Christchurch who believed that style shouldn't come at the expense of individuality. We saw a gap in the market for curated second-hand fashion that appealed to the trend-conscious consumer.
+                </p>
+                <p>
+                    Our platform connects fashion-forward individuals who want to refresh their wardrobes with unique pieces that tell a story. We focus on seasonal collections that align with Christchurch's distinctive climate and style sensibilities.
+                </p>
+                <p>
+                    Unlike typical second-hand marketplaces, ThimbleWinter is carefully curated to ensure only the most fashionable, high-quality pieces make it to our platform. Our team of style experts hand-selects featured items and works with sellers to showcase their best pieces.
+                </p>
+                <p>
+                    Join our community of fashion lovers who believe that great style is timeless, not disposable. Discover unique pieces that will make your wardrobe stand out from the crowd.
+                </p>
+                <button class="cta-button" onclick="showSection('listing')">Shop Now</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Page -->
+    <section id="faq" class="page-section faq-section">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about shopping and selling on ThimbleWinter</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do I buy an item on ThimbleWinter?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>To purchase an item, simply click on the product you're interested in, select your size if applicable, and click "Add to Cart." You can then proceed to checkout where you'll enter your shipping and payment information. Once your order is confirmed, you'll receive a confirmation email, and the seller will be notified to ship your item.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do I sell items on ThimbleWinter?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>To start selling, create an account and click "Sell" in your dashboard. You'll need to upload clear photos of your item, write a detailed description, set your price, and select shipping options. Once your listing is approved, it will appear on the marketplace. When someone purchases your item, you'll receive a notification and can ship it directly to the buyer.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What payment methods are accepted?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept all major credit cards, PayPal, and Afterpay for your convenience. All transactions are secure and encrypted to protect your financial information.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Can I return an item if it doesn't fit or I don't like it?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Returns are handled on a case-by-case basis and are at the discretion of individual sellers. We encourage buyers to ask detailed questions about measurements and condition before making a purchase. If an item arrives not as described, please contact us within 48 hours, and we'll help mediate with the seller.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How does shipping work?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Each seller sets their own shipping rates and methods. Standard shipping typically takes 3-5 business days within Christchurch. You can track your order through your account dashboard once the seller has shipped your item. For international shipping, please check with individual sellers as not all offer this service.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do I know the items are authentic?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>While we can't guarantee authenticity for all items, we have a verification process for high-value designer pieces. Additionally, our community rating system allows buyers to leave feedback about their purchases, helping maintain trust and transparency on the platform. If you have concerns about a specific item, we recommend asking the seller for additional photos or proof of purchase.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
     <footer>
-    <div class="footer-logo">
-      <img src="Images/SippinLogo.svg" alt="Logo" width="40">
-      <span>2025</span>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#" onclick="showSection('listing')">All Items</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Trending</a></li>
+                    <li><a href="#">Seasonal Collections</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sell</h3>
+                <ul>
+                    <li><a href="#">Start Selling</a></li>
+                    <li><a href="#">Seller Guidelines</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="#" onclick="showSection('about')">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#" onclick="showSection('faq')">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 ThimbleWinter. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toast-message">Item added to cart!</span>
     </div>
- <div class="social-media">
-  <a href="https://facebook.com" target="_blank" aria-label="Facebook">
-    <span class="icon-wrapper">
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 800 800">
-  <!-- Generator: Adobe Illustrator 29.6.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 9)  -->
-  <path d="M800,402.4C800,181.5,620.9,2.4,400,2.4S0,181.5,0,402.4s146.3,365.1,337.5,395.1v-279.5h-101.6v-115.6h101.6v-88.1c0-100.3,59.7-155.6,151.1-155.6s89.5,7.8,89.5,7.8v98.4h-50.4c-49.7,0-65.2,30.8-65.2,62.5v75h110.9l-17.7,115.6h-93.2v279.5c191.2-30,337.5-195.5,337.5-395.1Z"/>
-</svg>
-    </span>
-  </a>
-  <a href="https://twitter.com" target="_blank" aria-label="X">
-    <span class="icon-wrapper">
-       <svg viewBox="0 0 300 300.251" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M178.57 127.15 290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59h89.34M36.01 19.54H76.66l187.13 262.13h-40.66"/>
-      </svg>
-    </span>
-  </a>
-  <a href="https://instagram.com" target="_blank" aria-label="Instagram">
-    <span class="icon-wrapper">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#0F0F0F"/>
-<path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="#0F0F0F"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" fill="#0F0F0F"/>
-      </svg>
-    </span>
-  </a>
-</div>
-
-  </footer>
     
-    
-  </body>
+    <script>
+        // Show/hide page sections
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // GA4 tracking
+            gtag('event', 'page_view', {
+                page_title: sectionId,
+                page_location: window.location.href + '#' + sectionId
+            });
+        }
+        
+        // Toggle FAQ items
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('.faq-question').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            element.classList.toggle('active');
+            
+            // GA4 tracking
+            gtag('event', 'faq_interaction', {
+                question: element.querySelector('h3').textContent,
+                expanded: answer.classList.contains('active')
+            });
+        }
+        
+        // Change product detail image
+        function changeImage(thumbnail) {
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = thumbnail.src;
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnail.classList.add('active');
+            
+            // GA4 tracking
+            gtag('event', 'product_image_view', {
+                image_url: thumbnail.src
+            });
+        }
+        
+        // Add to cart function
+        function addToCart() {
+            showToast('Item added to cart!');
+            
+            // GA4 tracking
+            gtag('event', 'add_to_cart', {
+                currency: 'NZD',
+                value: 120.00,
+                items: [{
+                    item_id: 'vintage_wool_coat',
+                    item_name: 'Vintage Wool Overcoat',
+                    category: 'Coats & Jackets',
+                    price: 120.00,
+                    quantity: 1
+                }]
+            });
+        }
+        
+        // Add to favorites function
+        function addToFavorites() {
+            showToast('Item added to favorites!');
+            
+            // GA4 tracking
+            gtag('event', 'add_to_wishlist', {
+                currency: 'NZD',
+                value: 120.00,
+                items: [{
+                    item_id: 'vintage_wool_coat',
+                    item_name: 'Vintage Wool Overcoat',
+                    category: 'Coats & Jackets',
+                    price: 120.00,
+                    quantity: 1
+                }]
+            });
+        }
+        
+        // Message seller function
+        function messageSeller() {
+            showToast('Opening message with seller...');
+            
+            // GA4 tracking
+            gtag('event', 'contact_seller', {
+                seller_name: 'Sarah\'s Vintage Closet'
+            });
+        }
+        
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Mock GA4 tracking function
+        function gtag(type, eventName, parameters) {
+            console.log(`GA4 Event: ${type} - ${eventName}`, parameters);
+        }
+        
+        // Track filter interactions
+        document.querySelectorAll('.filter-option input').forEach(filter => {
+            filter.addEventListener('change', function() {
+                gtag('event', 'filter_interaction', {
+                    filter_category: this.name,
+                    filter_value: this.value,
+                    filter_selected: this.checked
+                });
+            });
+        });
+        
+        // Track search interactions
+        document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                gtag('event', 'search', {
+                    search_term: this.value
+                });
+            }
+        });
+        
+        // Track product card clicks
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.product-title').textContent;
+                const price = this.querySelector('.product-price').textContent;
+                
+                gtag('event', 'select_item', {
+                    items: [{
+                        item_name: title,
+                        price: price.replace('$', '')
+                    }]
+                });
+            });
+        });
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // GA4 tracking for initial page view
+            gtag('event', 'page_view', {
+                page_title: 'home',
+                page_location: window.location.href
+            });
+        });
+    </script>
+</body>
 </html>
-<!-- Hi-->
-
